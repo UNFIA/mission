@@ -15,7 +15,9 @@ bauprojekte:
 	cat bin/slice.sh | tr -d '\r' | tee bin/.slice_CRLF_sucks.sh
 	chmod 0755 bin/.slice_CRLF_sucks.sh
 	mkdir -p tmp
-	find $(BAUPROJEKTE) -type f -ipath 'mission_*.sqm' | xargs -n1 --no-run-if-empty ./bin/.slice_CRLF_sucks.sh | tee tmp/mission.txt
+	find $(BAUPROJEKTE) -type f -ipath '*/mission_*.sqm' | \
+		xargs -n1 --no-run-if-empty ./bin/.slice_CRLF_sucks.sh | \
+			tee tmp/mission.txt
 
 Lampen_einschalten:
 	cat bin/lamps.sh | tr -d '\r' | tee bin/.lamps_CRLF_sucks.sh
